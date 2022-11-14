@@ -1,0 +1,273 @@
+% IMPORTANTE
+% Para poner barrabaja en una url hay que cambiar '_' por '\textunderscore'
+
+%==============================================================================
+% PACKAGES
+%==============================================================================
+
+\usepackage[spanish,es-tabla]{babel} % For spanish texts
+\usepackage[utf8]{inputenc} % To use accent marks directly
+\usepackage[T1]{fontenc}
+\usepackage{graphicx} % For graphics
+\usepackage{svg} % For vectorial graphics
+\usepackage{float} % To modify the pisotion of pictures
+\usepackage{listings} % For code
+\usepackage{times} % For dates
+\usepackage{xcolor} % For colors (better than 'color' package)
+\usepackage[pdftex,
+			pdfauthor={Ander Granado Masid},
+			pdftitle={},
+			pdfsubject={},
+			pdfkeywords={},
+			pdfproducer={Latex},
+			pdfcreator={pdflatex}]{hyperref}  % For links and  PDF metadata
+\usepackage{url}
+\usepackage[Bjornstrup]{fncychap} % For better chapter titles
+\usepackage{fancyhdr} % For pages header and footer
+\usepackage{titling} % For use doc info in other parts of it 
+\usepackage{caption} % To add campions to images or tables
+\usepackage{minted} % Better syntax highlighting that listings
+\usepackage{comment} % To make multiple line comments
+\usepackage{enumitem} % For add custom enumeration items
+\usepackage{framed} % For frames for the tasks
+\usepackage{lscape} % To make some pages in landscape in a portrait document
+\usepackage{eurosym} % For euro symbol
+\usepackage{epigraph} % For epigraphs at the start of the chapters
+\usepackage{tablefootnote} % To make LaTeX able to put a footnote referenced inside a table
+\usepackage{todonotes}
+\usepackage{setspace} % To be able to modify 
+\usepackage{geometry} %% To se custom margins, ...
+\usepackage{afterpage} % To be able to change geometry for the title page
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex} % For references
+\addbibresource{biblio.bib} 
+
+%==============================================================================
+% REDEFINITIONS THAT I USE BUT IDK WTF THEY ARE DOING (CARE WITH THIS!)
+%==============================================================================
+
+\input{./redefs}
+
+%==============================================================================
+% STYLE
+%==============================================================================
+
+%------------------------------------------------------------------------------
+% PATH FOR THE PICTURES
+%------------------------------------------------------------------------------
+
+\graphicspath{{./figuras/}}
+
+%------------------------------------------------------------------------------
+% FIX FOR THE LIST OF FIGURES
+%------------------------------------------------------------------------------
+
+\makeatletter
+\renewcommand*\l@figure{\@dottedtocline{1}{1em}{3.2em}}
+\makeatother
+
+%------------------------------------------------------------------------------
+% TYPOGRAPHY
+%------------------------------------------------------------------------------
+
+\renewcommand{\familydefault}{\rmdefault} % Canges typography for ALL document
+\setlength{\parskip}{2mm} % Defines the lenght between paragraphs (def == 0)
+\renewcommand{\baselinestretch}{1.0}
+
+%------------------------------------------------------------------------------
+% COLORS FOR PART AND CHAPTER TITLES
+%------------------------------------------------------------------------------
+
+\definecolor{TitlesLight}{RGB}{112, 183, 172}
+\definecolor{TitlesDark}{RGB}{28, 85, 76}
+
+\colorlet{partbgcolor}{TitlesLight}% shaded background color for parts
+\colorlet{partnumcolor}{TitlesDark}% color for numbers in parts
+
+%------------------------------------------------------------------------------
+% HEADERS AND FOOTERS
+%------------------------------------------------------------------------------
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[RE,LO]{{\small \leftmark}}
+\fancyhead[LE,RO]{\thepage}
+\fancyfoot[RE,LO]{\theauthor}
+\fancyfoot[LE,RO]{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+%------------------------------------------------------------------------------
+% EPIGRAPHS
+%------------------------------------------------------------------------------
+
+\setlength\epigraphwidth{.6\textwidth}
+\setlength\epigraphrule{0pt}
+
+%------------------------------------------------------------------------------
+% LINKS (All black)
+%------------------------------------------------------------------------------
+
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+%------------------------------------------------------------------------------
+% CONTENTS NUMBERING 
+%------------------------------------------------------------------------------
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{3}
+
+\renewcommand\thechapter{\arabic{chapter}}
+
+%------------------------------------------------------------------------------
+% ORDERED LISTS NUMBERING
+%------------------------------------------------------------------------------
+
+\newlist{numbered}{enumerate}{4}
+\setlist[numbered,1]{label=\textbf{\arabic*.}}
+\setlist[numbered,2]{label=\textbf{\arabic{numberedi}.\arabic*}}
+\setlist[numbered,3]{label=\textbf{\arabic{numberedi}.\arabic{numberedii}.\arabic*}}
+\setlist[numbered,4]{label=\textbf{\arabic{numberedi}.\arabic{numberedii}.\arabic{numberediii}.\arabic*}}
+
+%------------------------------------------------------------------------------
+% FRAMES FOR TASKS
+%------------------------------------------------------------------------------
+
+\newcommand{\taskframe}[4]{
+	\begin{framed}
+		\textbf{Número:} #1.
+		
+		\textbf{Nombre:} #2.
+		
+		\textbf{Descripción:} #3.
+		
+		\textbf{Trabajo estimado:} #4 {horas.}
+	\end{framed}	
+}
+
+\newcommand{\riskframe}[6]{
+	\begin{framed}
+		\begin{framed}
+			\begin{center}
+				\textsc{\textbf{#1}}	
+			\end{center}
+		\end{framed}
+		
+		\textbf{Descripción:} #2.
+		
+		\textbf{Probabilidad:} #3.
+		
+		\textbf{Peligrosidad:} #4.
+		
+		\textbf{Medidas preventivas:} #5.
+			
+		\textbf{Medidas correctoras:} #6.
+	\end{framed}	
+}
+
+%------------------------------------------------------------------------------
+% CODE
+%------------------------------------------------------------------------------
+
+% Color for commands (sh, bash, ...) (with lstlisting)
+\definecolor{gray95}{gray}{.95}
+\definecolor{gray85}{gray}{.80}
+\definecolor{gray45}{gray}{.45}
+\definecolor{myturquoise}{RGB}{0, 128, 128}
+\definecolor{mypink}{RGB}{177,48,112}
+\definecolor{myblue}{RGB}{56,133,231}
+
+\lstset{ 
+	frame=Ltb,
+	framerule=0pt,
+	aboveskip=0.5cm,
+	framextopmargin=3pt,
+	framexbottommargin=3pt,
+	framexleftmargin=0.2cm,
+	framesep=0pt,
+	rulesep=2.0pt,
+	backgroundcolor=\color{gray95},
+	rulesepcolor=\color{black},
+	%
+	stringstyle=\ttfamily,
+	showstringspaces = false,
+	basicstyle=\small\ttfamily,
+	commentstyle=\color{gray45},
+	keywordstyle=\bfseries,
+	%
+	numbers=left,
+	numbersep=15pt,
+	numberstyle=\tiny,
+	numberfirstline = false,
+	breaklines=true,
+}
+
+% Minimize listings fragmentation
+%\lstnewenvironment{listing}[1][]
+%{\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+
+% Code style for terminal
+\lstdefinelanguage{none}{}
+\lstdefinestyle{terminal}{
+	language=none,
+	breaklines=true,
+	basicstyle=\footnotesize\bf\ttfamily,
+	backgroundcolor=\color{gray85},
+	rulesepcolor=\color{myturquoise},
+	numbers=none,
+}
+
+% Defnition for Kotlin language (because it not exists)
+% https://github.com/cansik/kotlin-latex-listing	(thanks mate!)
+\lstdefinelanguage{kotlin}{
+	keywords={package, as, as?, typealias, this, super, val, var, fun, for, null, true, false, is, in, throw, return, break, continue, object, if, try, else, while, do, when, class, interface, enum, object, companion, override, public, private, get, set, import, abstract, vararg, expect, actual, where, suspend, data, internal, dynamic, final, by},
+	keywordstyle=\color{NavyBlue}\bfseries,
+	ndkeywords={@Deprecated, @JvmName, @JvmStatic, @JvmOverloads, @JvmField, @JvmSynthetic, Iterable, Int, Long, Integer, Short, Byte, Float, Double, String, Runnable, Array},
+	ndkeywordstyle=\color{BurntOrange}\bfseries,
+	emph={println, return@, forEach, map, mapNotNull, first, filter, firstOrNull, lazy, delegate},
+	emphstyle={\color{OrangeRed}},
+	identifierstyle=\color{black},
+	sensitive=true,
+	commentstyle=\color{gray}\ttfamily,
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	stringstyle=\color{ForestGreen}\ttfamily,
+	morestring=[b]",
+	morestring=[s]{"""*}{*"""},
+}
+
+% For the rest of the code (with minted)
+% (minted have better syntax highlighting than lstlisting for code)
+\usemintedstyle{vs}
+
+\newenvironment{code}{\captionsetup{type=listing}}{}
+
+\setmintedinline{breakanywhere}
+
+\renewcommand\listoflistingscaption{Índice de códigos fuente}
+
+\newcommand{\custominputminted}{\inputminted[
+	tabsize=4,
+	frame=single,
+	framesep=2mm,
+	baselinestretch=1.0,
+	fontsize=\scriptsize,
+	breaklines
+	]
+}
+
+\newcommand{\customtinyinputminted}{\inputminted[
+	tabsize=4,
+	frame=single,
+	framesep=2mm,
+	baselinestretch=1.0,
+	fontsize=\tiny,
+	breaklines
+	]
+}

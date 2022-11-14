@@ -1,0 +1,76 @@
+
+\documentclass[a4paper,11pt,twoside,BCOR=8mm]{scrbook}
+
+%------------------------------------------------------------------------------
+% PACKAGES AND STYLE
+%------------------------------------------------------------------------------
+
+\include{setup}
+
+%------------------------------------------------------------------------------
+% DOCUMENT INFO
+%------------------------------------------------------------------------------
+
+\title{Desarrollo de herramientas de seguridad informática para Android}
+\author{Ander Granado Masid}
+\date{\today}
+
+%==============================================================================
+% DOCUMENT
+%------------------------------------------------------------------------------
+\begin{document}
+
+\frontmatter
+
+\include{cover} % Custom cover
+
+\include{tex/license-preamble}
+\include{tex/agradecimientos}
+
+\tableofcontents
+\listoffigures
+\listoftables
+\listoflistings
+
+\include{resumen}
+
+%------------------------------------------------------------------------------
+
+\mainmatter
+
+\part{Alcance del Trabajo}
+\include{tex/1-Alcance/descripcion}
+\include{tex/1-Alcance/viabilidad}
+
+\part{Fase 1: Estado del Arte de la Seguridad Informática}
+\include{tex/2-Teoria/intro}
+\include{tex/2-Teoria/conceptos}
+\include{tex/2-Teoria/aplicaciones}
+\include{tex/2-Teoria/pentesting}
+\include{tex/2-Teoria/conclusiones}
+
+\part{Fase 2: Desarrollo de la aplicación}
+\include{tex/3-Aplicacion/introduccion}
+\include{tex/3-Aplicacion/tecnologias}
+\include{tex/3-Aplicacion/desarrollo}
+\include{tex/3-Aplicacion/implementacion}
+
+\part{Análisis y conclusiones del Trabajo}
+\include{tex/4-Conclusiones/conclusiones}
+
+\part{Apéndices}
+
+%------------------------------------------------------------------------------
+
+\backmatter
+
+\appendix
+
+\include{netscan}
+
+\printbibliography[heading=bibintoc]
+
+\include{tex/license}
+
+\end{document}
+%==============================================================================
