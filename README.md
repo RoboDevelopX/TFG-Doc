@@ -1,5 +1,5 @@
-# Final Year Project
-This Final Year Project of my Bachelor's Degree in Computer Engineering in Management and Information Systems is a project in two phases. The first one is a state of the art on one of the most interesting areas of computer science, as it is the computer security for, in the second phase, and after all that analysis, develop a small prototype, a proof of concept to solve a concrete problem. The application developed is called [NetScan](https://github.com/ander94lakx/NetScan), an Android application to scan networks and domains.
+# Project
+The first one is a state of the art on one of the most interesting areas of computer science, as it is the computer security for, in the second phase, and after all that analysis, develop a small prototype, a proof of concept to solve a concrete problem. The application developed is called [NetScan](https://github.com/ander94lakx/NetScan), an Android application to scan networks and domains.
 
 # Gradu Amaierako Lana
 Gradu Amaierako Lan hau, Kudeaketaren eta Informazio Sistemen Informatikaren Ingeniaritzako Gradukoa, bi faseetan banatuta dagoen proiektu bat da. Lehenengoa Informatikaren arlo interesgarrienetariko bateko ikerketa bat da, Segurtasun Informatikoaren arloan, geroago, bigarren fasean, prototipo txiki bat garatzeko arlo horren barruan dauden arazoen baterako konponbide bat emateko. Inplementatu den aplikazioa [NetScan](https://github.com/ander94lakx/NetScan) deitzen da, eta ordenagaia saretik edo domeinutik informazioa ateratzeko Android aplikazio bat da.
